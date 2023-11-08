@@ -6,7 +6,7 @@ from core.database import CreateDatabaseInterface
 from core.server import AuthenticationManager
 import ssl
 
-db = CreateDatabaseInterface('mongodb', {'host': '127.0.0.1', 'port': 27017, 'database_name': 'test'})
+db = CreateDatabaseInterface('mongodb', {'host': 'mongo', 'port': 27017, 'database_name': 'test'})
 db.add_user('ryen', 'T5TCoAXS3Ng0Fr3')
 db.add_user('vivek', 'jr5dXC3mS799sGq')
 
