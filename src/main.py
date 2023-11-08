@@ -44,7 +44,7 @@ def home():
 @app.route('/get_active_nodes', methods=['GET'])
 @auth.login_session_required
 def get_active_nodes():
-    result = requests.get('http://127.0.0.1:5000/list_nodes')
+    result = requests.get('http://node_server:5000/list_nodes')
     return jsonify(result.json())
 
 @app.route('/make_node', methods=['POST'])
@@ -61,7 +61,7 @@ def make_node():
         'node_ip': node_ip,
         'node_port': node_port
     }
-    result = requests.post('http://127.0.0.1:5000/make_node', json=data)
+    result = requests.post('http://node_server:5000/make_node', json=data)
     return jsonify(result.json()), result.status_code
 
 @app.route('/delete_node', methods=['POST'])
@@ -74,7 +74,7 @@ def delete_node():
         'node_name': node_name,
     }
 
-    result = requests.post('http://127.0.0.1:5000/delete_node', json=data)
+    result = requests.post('http://node_server:5000/delete_node', json=data)
     return jsonify(result.json()), result.status_code
 
 if __name__ == '__main__':
