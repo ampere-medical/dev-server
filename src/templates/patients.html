@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add this to your <head> section if you haven't already included jQuery -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    
+    <title>Homepage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        nav {
+            background-color: #eee;
+            padding: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin: 0 15px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #nodeTable {
+            table-layout: auto;
+            width: auto;  /* ensures the table takes only as much width as needed */
+        }
+
+        #nodeTable td, #nodeTable th {
+            white-space: nowrap;
+            padding: 5px 10px; /* optional, for better spacing */
+        }
+
+        #makeNodeForm input[type="text"] {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Logged in as {{username}}</h1>
+    </header>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/patients">Patients</a>
+        <a href="/logout">Logout</a>
+    </nav>
+
+    <div class="content">
+        <div id="nodeTableDiv">
+            <h3>Patients</h3>
+            <table id="nodeTable" border="1">
+                <thead>
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Number of Blocks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be added here dynamically -->
+                    <tr>
+                        <td>John Doe</td>
+                        <td>3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -41,6 +41,11 @@ def logout():
 def home():
     return render_template('home.html', username=session.get('username', None))
 
+@app.route('/patients', methods=['GET'])
+@auth.login_session_required
+def patients():
+    return render_template('patients.html', username=session.get('username', None))
+
 @app.route('/get_active_nodes', methods=['GET'])
 @auth.login_session_required
 def get_active_nodes():
