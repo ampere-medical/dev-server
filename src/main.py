@@ -46,6 +46,15 @@ def home():
 def patients():
     return render_template('patients.html', username=session.get('username', None))
 
+@app.route('/patient/<patientid>', methods=['GET'])
+@auth.login_session_required
+def patient(patientid):
+    # Assuming patient_details is an HTML-formatted string
+    #patient_details = get_patient_details_from_db(patientid)
+    patient_details = '<h1>Patient Details</h1><p>Patient ID: {}</p>'.format(patientid)
+    return render_template('patient.html', patient_details=patient_details)
+
+
 @app.route('/get_active_nodes', methods=['GET'])
 @auth.login_session_required
 def get_active_nodes():

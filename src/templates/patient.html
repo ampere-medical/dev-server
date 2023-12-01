@@ -75,25 +75,7 @@
     </nav>
 
     <div class="content">
-        <div id="nodeTableDiv">
-            <h3>Patients</h3>
-            <table id="nodeTable" border="1">
-                <thead>
-                    <tr>
-                        <th>Patient Name</th>
-                        <th>Number of Blocks</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Rows will be added here dynamically -->
-                    <tr>
-                        <td><a href="/patient/john_doe">John Doe</a></td>
-                        <td>3</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
+        {{ patient_details|safe }}
     </div>
 
 </body>
