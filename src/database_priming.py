@@ -8,7 +8,7 @@ import ssl
 
 import patient
 
-db = CreateDatabaseInterface('mongodb', {'host': 'mongo', 'port': 27017, 'database_name': 'test'})
+db = CreateDatabaseInterface('mongodb', {'host': 'localhost', 'port': 27017, 'database_name': 'test'})
 db.add_user('ryen', 'T5TCoAXS3Ng0Fr3')
 db.add_user('vivek', 'jr5dXC3mS799sGq')
 
@@ -17,6 +17,6 @@ for name in patient_names:
     if not db.get_patient(name):
         print(f"Adding patient {name} to database")
         info = patient.get_patient_html_by_name(name)
-        db.add_patient("John Doe", info)
+        db.add_patient(name, info)
     else:
         print(f"Patient {name} already exists in database")
