@@ -6,9 +6,19 @@ from core.database import CreateDatabaseInterface
 from core.server import AuthenticationManager
 import ssl
 
+import patient
+
 db = CreateDatabaseInterface('mongodb', {'host': 'mongo', 'port': 27017, 'database_name': 'test'})
 db.add_user('ryen', 'T5TCoAXS3Ng0Fr3')
 db.add_user('vivek', 'jr5dXC3mS799sGq')
+
+patient_names = ["John Doe", "Jane Doe", "Jack Horner", "Jill Horner", "Jack Sprat", "Jill Sprat", "John Smith"]
+for name in patient_names:
+    if not db.get_patient(name):
+        print(f"Adding patient {name} to database")
+        db.add_patient("John Doe", patient.get_patient_html_by_name(name))
+    else:
+        print(f"Patient {name} already exists in database")
 
 auth = AuthenticationManager(database=db)
 
@@ -51,7 +61,8 @@ def patients():
 def patient(patientid):
     # Assuming patient_details is an HTML-formatted string
     #patient_details = get_patient_details_from_db(patientid)
-    patient_details = '<h1>Patient Details</h1><p>Patient ID: {}</p>'.format(patientid)
+    #patient_details = '<h1>Patient Details</h1><p>Patient ID: {}</p>'.format(patientid)
+    patient_details = db.get_patient(patientid)
     return render_template('patient.html', patient_details=patient_details)
 
 
